@@ -168,15 +168,100 @@ code {
   overflow: hidden;
 }
 
-.hero-grid {
+.hero-circuit {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.35;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%);
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, black 30%, transparent 88%);
+}
+.hero-circuit svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+.circuit-path.p1 { stroke: var(--line-soft); }
+.circuit-path.p2 { stroke: var(--line); }
+.circuit-path.p3 { stroke: var(--line-soft); }
+.circuit-path.p4 { stroke: var(--line); }
+
+.circuit-node {
+  fill: var(--ink);
+  stroke: var(--signal-amber);
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+.circuit-pulse {
+  fill: var(--signal-live);
+  filter: drop-shadow(0 0 4px var(--signal-live));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circuit-pulse { display: none; }
+}
+
+/* Language switch (flags) */
+.lang-switch {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(18, 37, 52, 0.6);
+  border: 1px solid var(--line-soft);
+  padding: 0.35rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem 0.3rem 0.3rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  opacity: 0.55;
+}
+
+.lang-btn:hover { opacity: 0.85; }
+
+.lang-btn.active {
+  opacity: 1;
+  border-color: var(--signal-live);
+  background: var(--signal-live-dim);
+}
+
+.flag-icon {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  display: block;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.lang-code {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+.lang-btn.active .lang-code { color: var(--text); }
+
+@media (max-width: 560px) {
+  .lang-switch { top: 0.9rem; right: 0.9rem; padding: 0.3rem; }
+  .lang-code { display: none; }
+  .lang-btn { padding: 0.3rem; }
 }
 
 .hero-content {
@@ -289,9 +374,6 @@ code {
 }
 .btn-ghost:hover { border-color: var(--text-muted); }
 
-/* =========================================================
-   STAGE SECTIONS (shared)
-========================================================= */
 .stage-section {
   padding: var(--section-pad) 1.5rem;
   max-width: 1080px;
@@ -329,10 +411,9 @@ code {
   max-width: 520px;
 }
 
-
 .build-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 3rem;
   align-items: start;
 }
@@ -342,34 +423,27 @@ code {
 
 .schematic-frame {
   position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
+  aspect-ratio: 3/4;
   border: 1px solid var(--line);
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 15px, var(--line-soft) 15px, var(--line-soft) 16px),
+    repeating-linear-gradient(90deg, transparent, transparent 15px, var(--line-soft) 15px, var(--line-soft) 16px);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 15px,
-      var(--line-soft) 15px,
-      var(--line-soft) 16px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 15px,
-      var(--line-soft) 15px,
-      var(--line-soft) 16px
-    );
 }
 
 .schematic-placeholder {
   font-family: var(--font-mono);
   color: var(--text-muted);
   font-size: 0.8rem;
+}
+
+.schematic-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.25) contrast(1.05);
 }
 
 .schematic-corner {
@@ -416,9 +490,6 @@ code {
   flex-shrink: 0;
 }
 
-/* =========================================================
-   TEST (skills)
-========================================================= */
 .test-suites {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -474,9 +545,83 @@ code {
 }
 .check { color: var(--signal-live); font-family: var(--font-mono); }
 
-/* =========================================================
-   DEPLOY (projects)
-========================================================= */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cert-card {
+  display: flex;
+  gap: 1.3rem;
+  background: var(--ink-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.7rem;
+  transition: border-color 0.2s ease;
+}
+.cert-card:hover { border-color: var(--line); }
+
+.cert-badge-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--signal-live);
+}
+.cert-badge-icon svg { width: 22px; height: 22px; }
+
+.cert-info { flex: 1; min-width: 0; }
+
+.cert-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cert-head h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.cert-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cert-issuer {
+  color: var(--signal-amber);
+  font-size: 0.88rem;
+  margin: 0.25rem 0 0.7rem;
+}
+
+.cert-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.cert-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+  max-width: 640px;
+}
+
+@media (max-width: 560px) {
+  .cert-card { flex-direction: column; }
+}
+
 .repo-list {
   display: flex;
   flex-direction: column;
@@ -553,9 +698,7 @@ code {
 }
 .repo-link:hover { text-decoration: underline; }
 
-/* =========================================================
-   MONITOR (contact)
-========================================================= */
+
 .endpoints {
   display: flex;
   flex-direction: column;
@@ -600,6 +743,7 @@ code {
   color: var(--signal-live);
   font-size: 0.8rem;
 }
+
 
 .site-footer {
   text-align: center;

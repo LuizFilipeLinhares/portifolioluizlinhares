@@ -12,48 +12,109 @@
 </head>
 <body>
 
-<!-- ===== PIPELINE TRACKER (nav fixa) ===== -->
 <header class="pipeline-tracker" id="pipeline-tracker">
   <div class="tracker-inner">
     <a href="#hero" class="tracker-logo">luiz<span class="cursor-blink">_</span></a>
-    <nav class="tracker-stages" aria-label="Navegação por etapas do pipeline">
+    <nav class="tracker-stages" data-i18n-attr="aria-label:nav_aria" aria-label="Navegação por etapas do pipeline">
       <a href="#build" class="stage" data-stage="build">
         <span class="stage-dot" aria-hidden="true"></span>
-        <span class="stage-label">Apresentação</span>
+        <span class="stage-label">build</span>
       </a>
       <span class="stage-connector" aria-hidden="true"></span>
       <a href="#test" class="stage" data-stage="test">
         <span class="stage-dot" aria-hidden="true"></span>
-        <span class="stage-label">Competências</span>
+        <span class="stage-label">test</span>
+      </a>
+      <span class="stage-connector" aria-hidden="true"></span>
+      <a href="#certify" class="stage" data-stage="certify">
+        <span class="stage-dot" aria-hidden="true"></span>
+        <span class="stage-label">certify</span>
       </a>
       <span class="stage-connector" aria-hidden="true"></span>
       <a href="#deploy" class="stage" data-stage="deploy">
         <span class="stage-dot" aria-hidden="true"></span>
-        <span class="stage-label">Projetos</span>
+        <span class="stage-label">deploy</span>
       </a>
       <span class="stage-connector" aria-hidden="true"></span>
       <a href="#monitor" class="stage" data-stage="monitor">
         <span class="stage-dot" aria-hidden="true"></span>
-        <span class="stage-label">Contatos</span>
+        <span class="stage-label">monitor</span>
       </a>
     </nav>
-    <span class="tracker-status" id="tracker-status">pipeline: <strong>idle</strong></span>
+    <span class="tracker-status" id="tracker-status"><span data-i18n="tracker_label">pipeline:</span> <strong>idle</strong></span>
   </div>
 </header>
 
 <main>
 
+
   <section class="hero" id="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-circuit" aria-hidden="true">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <path class="circuit-path p1" d="M -50 480 L 180 480 L 220 440 L 420 440 L 460 400 L 700 400 L 740 360 L 1050 360" />
+        <path class="circuit-path p2" d="M -50 180 L 140 180 L 180 220 L 380 220 L 420 260 L 620 260 L 660 300 L 1050 300" />
+        <path class="circuit-path p3" d="M -50 90 L 260 90 L 300 130 L 560 130 L 600 170 L 1050 170" />
+        <path class="circuit-path p4" d="M -50 560 L 320 560 L 360 520 L 640 520 L 680 480 L 1050 480" />
+
+        <circle class="circuit-node" cx="220" cy="440" r="4" />
+        <circle class="circuit-node" cx="460" cy="400" r="4" />
+        <circle class="circuit-node" cx="740" cy="360" r="4" />
+        <circle class="circuit-node" cx="180" cy="220" r="4" />
+        <circle class="circuit-node" cx="420" cy="260" r="4" />
+        <circle class="circuit-node" cx="660" cy="300" r="4" />
+        <circle class="circuit-node" cx="300" cy="130" r="4" />
+        <circle class="circuit-node" cx="600" cy="170" r="4" />
+        <circle class="circuit-node" cx="360" cy="520" r="4" />
+        <circle class="circuit-node" cx="680" cy="480" r="4" />
+
+        <circle class="circuit-pulse" r="3">
+          <animateMotion dur="7s" repeatCount="indefinite"
+            path="M -50 480 L 180 480 L 220 440 L 420 440 L 460 400 L 700 400 L 740 360 L 1050 360" />
+        </circle>
+        <circle class="circuit-pulse" r="3">
+          <animateMotion dur="9s" begin="1.5s" repeatCount="indefinite"
+            path="M -50 180 L 140 180 L 180 220 L 380 220 L 420 260 L 620 260 L 660 300 L 1050 300" />
+        </circle>
+        <circle class="circuit-pulse" r="3">
+          <animateMotion dur="8s" begin="3s" repeatCount="indefinite"
+            path="M -50 560 L 320 560 L 360 520 L 640 520 L 680 480 L 1050 480" />
+        </circle>
+      </svg>
+    </div>
+
+    <div class="lang-switch" role="group" aria-label="Idioma / Language">
+      <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true" aria-label="Ver página em português">
+        <svg class="flag-icon" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="16" rx="2" fill="#2E9147"/>
+          <polygon points="12,2.4 21,8 12,13.6 3,8" fill="#F6D732"/>
+          <circle cx="12" cy="8" r="3.6" fill="#2B4F8C"/>
+        </svg>
+        <span class="lang-code">PT</span>
+      </button>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="View page in English">
+        <svg class="flag-icon" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="16" rx="2" fill="#B22334"/>
+          <rect y="1.23" width="24" height="1.23" fill="#fff"/>
+          <rect y="3.69" width="24" height="1.23" fill="#fff"/>
+          <rect y="6.15" width="24" height="1.23" fill="#fff"/>
+          <rect y="8.61" width="24" height="1.23" fill="#fff"/>
+          <rect y="11.08" width="24" height="1.23" fill="#fff"/>
+          <rect y="13.54" width="24" height="1.23" fill="#fff"/>
+          <rect width="10" height="8.6" rx="2" fill="#3C3B6E"/>
+        </svg>
+        <span class="lang-code">EN</span>
+      </button>
+    </div>
+
     <div class="hero-content">
-      <p class="eyebrow">// software engineer</p>
+      <p class="eyebrow" data-i18n="hero_eyebrow">// software engineer</p>
       <h1 class="hero-title">Luiz Filipe <span class="hero-title-accent">Linhares</span></h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
         Desenvolvo aplicações web do zero à produção do layout ao deploy com atenção especial
         para qualidade de código, testes automatizados e entregas confiáveis.
       </p>
 
-      <div class="terminal-window" role="img" aria-label="Terminal simulando execução de um pipeline">
+      <div class="terminal-window" role="img" data-i18n-attr="aria-label:hero_terminal_aria" aria-label="Terminal simulando execução de um pipeline">
         <div class="terminal-bar">
           <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
           <span class="terminal-title">luiz@dev: ~/portfolio</span>
@@ -64,55 +125,61 @@
       </div>
 
       <div class="hero-cta">
-        <a href="#build" class="btn btn-primary">ver mais ↓</a>
-        <a href="#deploy" class="btn btn-ghost">ir direto aos projetos</a>
+        <a href="#build" class="btn btn-primary" data-i18n="hero_cta_pipeline">ver o pipeline ↓</a>
+        <a href="#deploy" class="btn btn-ghost" data-i18n="hero_cta_projects">ir direto aos projetos</a>
       </div>
     </div>
   </section>
 
+  <!-- ===== BUILD (Sobre) ===== -->
   <section class="stage-section" id="build">
     <div class="stage-heading">
-      <span class="stage-tag">01 · Apresentação // About</span>
-      <h2>Montando a base</h2>
+      <span class="stage-tag">01 · build</span>
+      <h2 data-i18n="build_title">Montando a base</h2>
     </div>
 
     <div class="build-layout">
       <div class="build-card schematic">
         <div class="schematic-frame">
-          <img src="./assets/137822321.jpg" alt="Foto de Luiz">
+          <img src="assets/137822321.jpg" data-i18n-attr="alt:build_photo_alt" alt="Foto de Luiz Filipe Linhares" class="schematic-photo">
+          <span class="schematic-corner tl"></span>
+          <span class="schematic-corner tr"></span>
+          <span class="schematic-corner bl"></span>
+          <span class="schematic-corner br"></span>
         </div>
-        <p class="schematic-caption">fig. 01 — componente principal</p>
+        <p class="schematic-caption" data-i18n="build_caption">fig. 01 — componente principal</p>
       </div>
 
       <div class="build-card about-text">
-        <p>
+        <p data-i18n-html="build_p1">
           Sou estudante de Engenharia de Software na <strong>UniSATC</strong> (Criciúma/SC) e
-          desenvolvedor full-stack, com experiência construindo aplicações web completas — de
+          desenvolvedor full-stack, com experiência construindo aplicações web completas de
           interfaces em React/Next.js a APIs, bancos de dados e infraestrutura de deploy.
         </p>
-        <p>
+        <p data-i18n="build_p2">
           Gosto de pensar no ciclo inteiro de um produto: da primeira tela até o que garante que
           ele continue funcionando depois testes automatizados, pipelines de CI/CD e boas
           práticas de qualidade de código.
         </p>
-        <p>
+        <p data-i18n="build_p3">
           Também colaboro em projetos de grupo, de refatoração de sistemas legados a
           gestão de projetos de software do início ao fim.
         </p>
 
         <ul class="about-facts">
-          <li><span class="fact-key">local</span><span class="fact-val">Criciúma, SC — Brasil</span></li>
-          <li><span class="fact-key">formação</span><span class="fact-val">Engenharia de Software · UniSATC</span></li>
+          <li><span class="fact-key" data-i18n="fact_key_local">local</span><span class="fact-val" data-i18n="fact_val_local">Criciúma, SC — Brasil</span></li>
+          <li><span class="fact-key" data-i18n="fact_key_edu">formação</span><span class="fact-val" data-i18n="fact_val_edu">Engenharia de Software · UniSATC</span></li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- ===== TEST (Skills) ===== -->
   <section class="stage-section alt" id="test">
     <div class="stage-heading">
-      <span class="stage-tag">02 · Competências // Skills</span>
-      <h2>Suíte de competências</h2>
-      <p class="stage-intro">Cada grupo abaixo é uma "suíte de testes" as ferramentas que uso no dia a dia.</p>
+      <span class="stage-tag">02 · test</span>
+      <h2 data-i18n="test_title">Suíte de competências</h2>
+      <p class="stage-intro" data-i18n="test_intro">Cada grupo abaixo é uma "suíte de testes", as ferramentas que uso no dia a dia.</p>
     </div>
 
     <div class="test-suites">
@@ -148,9 +215,9 @@
           <span class="suite-badge pass">PASS</span>
         </div>
         <ul class="suite-checks">
-          <li><span class="check">✓</span> Docker &amp; contêineres</li>
+          <li><span class="check">✓</span> <span data-i18n="skill_docker">Docker &amp; contêineres</span></li>
           <li><span class="check">✓</span> GitHub Actions (CI/CD)</li>
-          <li><span class="check">✓</span> Trivy varredura de vulnerabilidades</li>
+          <li><span class="check">✓</span> <span data-i18n="skill_trivy">Trivy — varredura de vulnerabilidades</span></li>
           <li><span class="check">✓</span> SonarCloud / SonarQube</li>
         </ul>
       </div>
@@ -163,18 +230,78 @@
         <ul class="suite-checks">
           <li><span class="check">✓</span> Jest &amp; Playwright</li>
           <li><span class="check">✓</span> Selenium WebDriver</li>
-          <li><span class="check">✓</span> Análise de code smells</li>
-          <li><span class="check">✓</span> Git &amp; controle de versão</li>
+          <li><span class="check">✓</span> <span data-i18n="skill_smells">Análise de code smells</span></li>
+          <li><span class="check">✓</span> <span data-i18n="skill_git">Git &amp; controle de versão</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="stage-section" id="deploy">
+  <!-- ===== CERTIFY (Certificados) ===== -->
+  <section class="stage-section" id="certify">
     <div class="stage-heading">
-      <span class="stage-tag">03 · Projetos // Projects</span>
-      <h2>Princiais Projetos</h2>
-      <p class="stage-intro">Uma seleção de trabalhos de aplicações full-stack a projetos de infraestrutura e qualidade.</p>
+      <span class="stage-tag">03 · certify</span>
+      <h2 data-i18n="certify_title">Licenças &amp; certificados</h2>
+      <p class="stage-intro" data-i18n="certify_intro">Cursos e certificações concluídos ao longo do caminho.</p>
+    </div>
+
+    <div class="cert-list">
+
+      <article class="cert-card">
+        <div class="cert-badge-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="m8.5 12 2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <div class="cert-head">
+            <h3>Python</h3>
+            <span class="cert-date" data-i18n="cert_python_date">fev 2026</span>
+          </div>
+          <p class="cert-issuer">Cisco Networking Academy</p>
+          <div class="cert-tags">
+            <span class="tag" data-i18n="cert_python_tag">Python e Algoritmos</span>
+          </div>
+          <p class="cert-desc" data-i18n="cert_python_desc">
+            Design, desenvolvimento, depuração, execução e refatoração de programas simples em
+            Python 3.
+          </p>
+        </div>
+      </article>
+
+      <article class="cert-card">
+        <div class="cert-badge-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="m8.5 12 2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <div class="cert-head">
+            <h3>Docker</h3>
+            <span class="cert-date" data-i18n="cert_docker_date">fev 2025</span>
+          </div>
+          <p class="cert-issuer">Udemy</p>
+          <div class="cert-tags">
+            <span class="tag" data-i18n="cert_docker_tag">Docker e Alpine</span>
+          </div>
+          <p class="cert-desc" data-i18n="cert_docker_desc">
+            Criação e otimização de containers, do zero ao avançado, incluindo boas práticas com
+            Linux Alpine.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== DEPLOY (Projetos) ===== -->
+  <section class="stage-section alt" id="deploy">
+    <div class="stage-heading">
+      <span class="stage-tag">04 · deploy</span>
+      <h2 data-i18n="deploy_title">Projetos em produção</h2>
+      <p class="stage-intro" data-i18n="deploy_intro">Uma seleção de trabalhos — de aplicações full-stack a projetos de infraestrutura e qualidade.</p>
     </div>
 
     <div class="repo-list">
@@ -183,32 +310,33 @@
         <div class="repo-card-head">
           <span class="repo-icon" aria-hidden="true">⎇</span>
           <h3>tcc-devops-testes</h3>
-          <span class="repo-visibility">TCC</span>
+          <span class="repo-visibility" data-i18n="repo1_visibility">TCC</span>
         </div>
-        <p class="repo-desc">
+        <p class="repo-desc" data-i18n="repo1_desc">
           Estudo prático sobre eficiência de testes automatizados, com um pipeline de CI/CD no
           GitHub Actions integrando build de imagem Docker, varredura de vulnerabilidades com
           Trivy e testes automatizados com Selenium em modo headless.
         </p>
         <div class="repo-metrics">
-          <span class="metric"><strong>12</strong> testes passando</span>
-          <span class="metric"><strong>~8s</strong> execução dos testes</span>
-          <span class="metric"><strong>~1min35s</strong> pipeline completo</span>
+          <span class="metric"><strong>12</strong> <span data-i18n="repo1_metric1">testes passando</span></span>
+          <span class="metric"><strong>~8s</strong> <span data-i18n="repo1_metric2">execução dos testes</span></span>
+          <span class="metric"><strong>~1min35s</strong> <span data-i18n="repo1_metric3">pipeline completo</span></span>
         </div>
         <div class="repo-tags">
           <span class="tag">Docker</span><span class="tag">GitHub Actions</span>
           <span class="tag">Trivy</span><span class="tag">SonarCloud</span><span class="tag">Selenium</span>
         </div>
-        <a href="https://github.com/LuizFilipeLinhares/tcc-devops-testes" class="repo-link">ver repositório →</a>
+        <!-- TODO: troque pelo link real do repositório -->
+        <a href="#" class="repo-link" data-i18n="repo_link">ver repositório →</a>
       </article>
 
       <article class="repo-card">
         <div class="repo-card-head">
           <span class="repo-icon" aria-hidden="true">⎇</span>
           <h3>pizzaria-bei-giovanni-refactor</h3>
-          <span class="repo-visibility">grupo</span>
+          <span class="repo-visibility" data-i18n="repo2_visibility">grupo</span>
         </div>
-        <p class="repo-desc">
+        <p class="repo-desc" data-i18n="repo2_desc">
           Refatoração de um sistema de backoffice para pizzaria. Produzimos um relatório de análise
           de code smells e uma apresentação cobrindo segurança, qualidade, duplicação de código e
           problemas de arquitetura.
@@ -217,45 +345,38 @@
           <span class="tag">Refactoring</span><span class="tag">Code Quality</span>
           <span class="tag">Segurança</span><span class="tag">Arquitetura</span>
         </div>
-        <a href="https://github.com/LuizZomer/PizzariaBeiGiovanniBackoffice" class="repo-link">ver repositório →</a>
+        <!-- TODO: troque pelo link real do repositório -->
+        <a href="#" class="repo-link" data-i18n="repo_link">ver repositório →</a>
       </article>
 
       <article class="repo-card">
         <div class="repo-card-head">
           <span class="repo-icon" aria-hidden="true">⎇</span>
-          <h3>pipeline-dados-azure</h3>
-          <span class="repo-visibility">grupo</span>
+          <h3>sistema-gestao-insumos-agricolas</h3>
+          <span class="repo-visibility" data-i18n="repo2_visibility">grupo</span>
         </div>
-
-        <p class="repo-desc">
-          Implementação de uma pipeline de dados em ambiente Azure, com provisionamento de infraestrutura
-          utilizando Terraform e processamento de dados no Azure Databricks. Atuei como responsável pela
-          execução da infraestrutura, automação do ambiente e configuração da pipeline, embora o
-          repositório pertença a outra organização.
+        <p class="repo-desc" data-i18n="repo3_desc">
+          Sistema de gestão de insumos agrícolas, com artefatos completos de gerenciamento de
+          projeto: tabela PERT com estimativas de custo, alocação de equipe em 31 tarefas e
+          PM Canvas — além da implementação full-stack.
         </p>
-
         <div class="repo-tags">
-          <span class="tag">Terraform</span>
-          <span class="tag">Microsoft Azure</span>
-          <span class="tag">Azure Databricks</span>
-          <span class="tag">Delta Lake</span>
-          <span class="tag">PySpark</span>
-          <span class="tag">CI/CD</span>
-          <span class="tag">Data Engineering</span>
+          <span class="tag">NestJS</span><span class="tag">Next.js 15</span>
+          <span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span>
         </div>
-
-        <a href="https://github.com/LuizZomer/pipelineDeDados" class="repo-link">ver repositório →</a>
+        <!-- TODO: troque pelo link real do repositório -->
+        <a href="#" class="repo-link" data-i18n="repo_link">ver repositório →</a>
       </article>
-      
 
     </div>
   </section>
 
-  <section class="stage-section alt" id="monitor">
+  <!-- ===== MONITOR (Contato) ===== -->
+  <section class="stage-section" id="monitor">
     <div class="stage-heading">
-      <span class="stage-tag">04 · Contato // Contact</span>
-      <h2>Endpoints de contato</h2>
-      <p class="stage-intro">Todos os canais abaixo estão operacionais.</p>
+      <span class="stage-tag">05 · monitor</span>
+      <h2 data-i18n="monitor_title">Endpoints de contato</h2>
+      <p class="stage-intro" data-i18n="monitor_intro">Todos os canais abaixo estão operacionais.</p>
     </div>
 
     <div class="endpoints">
@@ -283,7 +404,7 @@
 </main>
 
 <footer class="site-footer">
-  <p>deployed via GitHub Pages · build <span id="build-year"></span></p>
+  <p><span id="footer-text">deployed via GitHub Pages · build</span> <span id="build-year"></span></p>
 </footer>
 
 <script src="script.js"></script>
