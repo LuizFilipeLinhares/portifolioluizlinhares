@@ -50,10 +50,12 @@ export interface CertificationItem {
   title: string;
   issuer: string;
   date: string;
-  area: 'Desenvolvimento' | 'DevOps & Cloud' | 'Dados' | 'Qualidade de Software' | 'Fundamentos TI';
+  area: 'Desenvolvimento' | 'DevOps & Cloud' | 'Dados' | 'Qualidade de Software' | 'Fundamentos TI' | 'Inteligência Artificial';
   verificationUrl?: string;
   certificateCode?: string;
   description?: string;
+  /** Imagem do certificado (importada de src/assets) exibida em miniatura no card e em tamanho maior no modal. */
+  imageUrl?: string;
 }
 
 export interface TccCaseStudy {

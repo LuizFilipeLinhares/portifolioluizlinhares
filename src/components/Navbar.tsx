@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X, FileText, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { Logo } from './ui/Logo';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -76,9 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, onOpenRes
             }}
             className="flex items-center gap-2 text-sm font-semibold tracking-tight text-neutral-900 dark:text-white hover:opacity-80 transition-opacity"
           >
-            <span className="w-6 h-6 rounded bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-mono text-[11px] font-bold flex items-center justify-center">
-              LF
-            </span>
+            <Logo className="w-7 h-7 rounded-[7px] shrink-0" />
             <span className="hidden sm:inline font-sans">{PERSONAL_INFO.name}</span>
           </a>
 

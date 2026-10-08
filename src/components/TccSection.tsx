@@ -38,13 +38,13 @@ const AnimatedMetric: React.FC<{ value: string }> = ({ value }) => {
 export const TccSection: React.FC = () => {
   return (
     <Section id="tcc">
-      <div className="max-w-4xl space-y-8">
+      <div className="space-y-8">
         {/* Section Header */}
         <div className="space-y-1">
           <div className="text-xs font-mono text-neutral-500 dark:text-neutral-400">
             04 / TCC &amp; PESQUISA
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
             {TCC_CASE_STUDY.title}
           </h2>
           <p className="text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400">

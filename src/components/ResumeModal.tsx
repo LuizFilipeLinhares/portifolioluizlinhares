@@ -60,11 +60,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <span aria-hidden="true">·</span>
               <span>{PERSONAL_INFO.location}</span>
               <span aria-hidden="true">·</span>
-              <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer" className="hover:underline">
+              <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
                 GitHub
               </a>
               <span aria-hidden="true">·</span>
-              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="hover:underline">
+              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline">
                 LinkedIn
               </a>
             </div>

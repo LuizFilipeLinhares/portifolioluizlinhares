@@ -1,5 +1,8 @@
 import { Project, SkillGroup, TimelineEntry, CertificationItem, TccCaseStudy } from '../types/portfolio';
 import profilePhoto from '../assets/photo.jpg';
+import certPythonImg from '../assets/certPy.png';
+import certDockerImg from '../assets/certDocker.png';
+import certAiImg from '../assets/certAI.png';
 
 export const PERSONAL_INFO = {
   name: 'Luiz Filipe Linhares',
@@ -203,6 +206,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     area: 'Desenvolvimento',
     description:
       'Design, desenvolvimento, depuração, execução e refatoração de programas simples em Python 3.',
+    imageUrl: certPythonImg,
   },
   {
     id: 'cert-docker-udemy',
@@ -212,6 +216,20 @@ export const CERTIFICATIONS: CertificationItem[] = [
     area: 'DevOps & Cloud',
     description:
       'Criação e otimização de containers, do zero ao avançado, incluindo boas práticas com Linux Alpine.',
+    certificateCode: 'UC-5ebdb045-85ec-43bf-ab33-1cde62e48ec5',
+    verificationUrl: 'https://ude.my/UC-5ebdb045-85ec-43bf-ab33-1cde62e48ec5',
+    imageUrl: certDockerImg,
+  },
+  {
+    id: 'cert-ai-ibm',
+    title: 'AI Fundamentals: Language and Vision in AI',
+    issuer: 'IBM SkillsBuild',
+    date: '09/2026',
+    area: 'Inteligência Artificial',
+    description:
+      'Fundamentos de Inteligência Artificial aplicados a processamento de linguagem natural (NLP) e visão computacional.',
+    verificationUrl: 'https://www.credly.com/go/7ir7r0QT',
+    imageUrl: certAiImg,
   },
 ];
 

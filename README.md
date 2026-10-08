@@ -100,6 +100,31 @@ como Formspree ou Web3Forms — me avise se quiser ajuda com isso.
 └── package.json
 ```
 
+## Segurança
+
+Auditoria realizada no código e nas dependências:
+
+- **Sem segredos no repositório**: nenhuma chave de API, token ou senha (o `.gitignore` também bloqueia `.env*`).
+- **Sem vetores de XSS**: não há `dangerouslySetInnerHTML`, `eval`, `innerHTML` nem scripts inline.
+- **Links externos protegidos**: todo `target="_blank"` usa `rel="noopener noreferrer"` (evita *reverse tabnabbing*).
+- **Formulário de contato**: os campos são codificados com `encodeURIComponent` antes de montar o `mailto:`, evitando injeção de parâmetros/cabeçalhos.
+- **Dependências**: `npm audit` sem vulnerabilidades conhecidas.
+- **CI/CD com privilégio mínimo**: o workflow só pede `contents: read`, `pages: write` e `id-token: write`.
+- **Sem sourcemaps** no build de produção.
+- **Content-Security-Policy** via `<meta>` no `index.html` (vale em qualquer host, inclusive GitHub Pages): scripts apenas do próprio domínio, sem `unsafe-eval`, sem iframes/objects.
+- **Headers HTTP completos** em `public/_headers` (X-Frame-Options, HSTS, nosniff, Permissions-Policy, CSP com `frame-ancestors`).
+
+> **Limitação do GitHub Pages:** ele não permite headers HTTP customizados, então o `_headers`
+> é ignorado lá e o site fica sem proteção contra *clickjacking* (X-Frame-Options/`frame-ancestors`)
+> e sem HSTS próprio (o GitHub já força HTTPS). Na **Cloudflare Pages** o `_headers` é aplicado
+> automaticamente.
+>
+> **Nota sobre a CSP:** `style-src` mantém `'unsafe-inline'` porque o Framer Motion aplica estilos
+> inline para animar. Scripts continuam estritos (`'self'`).
+>
+> Se um dia adicionar analytics, fontes ou imagens de outros domínios, será preciso liberá-los na CSP
+> (`index.html` e `public/_headers`), senão o navegador vai bloqueá-los.
+
 ## Licença
 
 Distribuído sob a licença MIT — veja [LICENSE](LICENSE).

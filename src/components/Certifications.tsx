@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { CERTIFICATIONS } from '../data/portfolioData';
+import { CertificationItem } from '../types/portfolio';
 import { Section } from './ui/Section';
 import { CertificationCard } from './CertificationCard';
+import { CertificationModal } from './CertificationModal';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export const Certifications: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
+  const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
   const displayedCerts = showAll ? CERTIFICATIONS : CERTIFICATIONS.slice(0, 4);
 
   return (
@@ -22,11 +25,12 @@ export const Certifications: React.FC = () => {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedCerts.map((cert) => (
             <CertificationCard
               key={cert.id}
               cert={cert}
+              onClick={() => setSelectedCert(cert)}
             />
           ))}
         </div>
@@ -45,6 +49,8 @@ export const Certifications: React.FC = () => {
           </div>
         )}
       </div>
+
+      <CertificationModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
     </Section>
   );
 };

@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Hardening de segurança (funciona em qualquer host estático, incl. GitHub Pages).
+         Headers reais (X-Frame-Options, HSTS etc.) ficam em /public/_headers, que
+         só é aplicado por hosts que suportam headers HTTP customizados (ex: Cloudflare Pages). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Luiz Filipe Linhares — Engenharia de Software &amp; DevOps</title>
     <meta name="description" content="Portfólio profissional de Luiz Filipe Linhares: Engenharia de Software, desenvolvimento full-stack, automação de testes e práticas de DevOps (CI/CD, Docker, GitHub Actions)." />
     
@@ -22,8 +28,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Favicon SVG data URI -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f172a'/%3E%3Cpath d='M9 9v14h6M17 9v14h7' stroke='%233b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+    <!-- Favicon SVG data URI — mesmo desenho "LF" usado em src/components/ui/Logo.tsx.
+         Se ajustar o Logo.tsx, replique a mudança aqui para manter os dois idênticos. -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f172a'/%3E%3Cpath d='M9 9v14h6M17 9v14M17 9h7M17 16h5' stroke='%233b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
